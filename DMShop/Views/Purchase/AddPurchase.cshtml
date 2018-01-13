@@ -25,18 +25,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label "></label>
-                <input asp-for="Quantity" id="txtQuan" name="txtQuan" class="form-control cal" />
+                <input asp-for="Quantity"  class="form-control cal" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PricePerUnit" class="control-label"></label>
-                <input asp-for="PricePerUnit" id="txtPrice" name="txtPrice" class="form-control cal" />
+                <input asp-for="PricePerUnit"  class="form-control cal" />
                 <span asp-validation-for="PricePerUnit" class="text-danger"></span>
             </div>
             
             <div class="form-group">
-                <label asp-for="TotalPrice" id="lblTotal" class="control-label"></label>
-                <input asp-for="TotalPrice" id="total" name="total" class="form-control tcal" />
+                <label asp-for="TotalPrice"  class="control-label"></label>
+                <input asp-for="TotalPrice"  class="form-control tcal" />
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -68,7 +68,7 @@
         //        });
         //    });
         //});
-        $(function () {
+        @*$(function () {
 
             $("#txtQuan,#txtPrice").keyup(function (e) {
 
@@ -84,7 +84,7 @@
             });
 
         });
-    </script>
+    </script>*@
 
 
     @*script for live chat agent*@
