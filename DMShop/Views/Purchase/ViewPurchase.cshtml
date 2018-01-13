@@ -1,0 +1,92 @@
+﻿@model IEnumerable<DMShop.Models.Purchase>
+
+@{
+    ViewData["Title"] = "ViewPurchase";
+}
+
+<h2>Purchase(s)<span class="badge" id="PurchaseCounter" name="PurchaseCounter"></span></h2>
+
+
+    <a href="/Purchase/AddPurchase" class="btn btn-info">Add Purchase</a>
+
+<table class="table table-hover table-responsive table-striped" id="ViewPurchase" name="ViewPurchase">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VendorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PricePerUnit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerUnit)
+            </td>
+            
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id } , new {@class = "btn btn-primary btn-xs" }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id  }, new { @class = "btn btn-primary btn-xs" }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  } , new { @class = "btn btn-primary btn-xs" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a href="/DashBoard/Index" class="btn btn-info" >Back To Dashboard</a>
+
+
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () { 
+            $('#ViewPurchase').DataTable();
+            $('#PurchaseCounter').load('/Purchase/CountPurchase');
+        });
+    </script>
+
+
+    @*script for live chat agent*@
+    <script type="text/javascript">
+        function add_chatinline() { var hccid = 97226075; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+        add_chatinline(); </script>
+
+}

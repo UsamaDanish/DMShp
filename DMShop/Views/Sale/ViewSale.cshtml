@@ -1,0 +1,104 @@
+﻿@model IEnumerable<DMShop.Models.Sale>
+
+@{
+    ViewData["Title"] = "ViewSale";
+}
+
+<h2>Sale(s)<span class="badge" id="SaleCounter" name="SaleCounter"></span></h2>
+<p>
+    <a asp-action="AddSale" class="btn btn-info">Add Sale</a>
+</p>
+<table class="table table-hover table-responsive table-striped" id="ViewSale" name="ViewSale">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PricePerUnit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id } , new {@class="btn btn-primary btn-xs" }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id } , new { @class = "btn btn-primary btn-xs" }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id } , new { @class = "btn btn-primary btn-xs" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a href="/Dashboard/Index" class="btn btn-info">Back to Dashboard</a>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () { 
+            $('#ViewSale').DataTable();
+            $('#SaleCounter').load('/Sale/CountSale')
+        });
+    </script>
+
+
+    @*script for live chat agent*@
+    <script type="text/javascript">
+        function add_chatinline() { var hccid = 97226075; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+        add_chatinline(); </script>
+@*script for disqus comments*@
+<div id="disqus_thread"></div>
+<script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://usamadanish.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+}
+

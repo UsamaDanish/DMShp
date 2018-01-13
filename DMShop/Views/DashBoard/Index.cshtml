@@ -1,0 +1,97 @@
+﻿
+<html>
+    <head>
+    <title>Dashboard</title>
+    <link href="~/Accessories/Dashboard.css" rel="stylesheet" type="text/css"/>
+    </head>
+<body>
+    <h2>DashBoard</h2>
+    @*For Number of user Count*@
+    <div class="row col-md-5 panel panel-default pull-left">
+        <div class="col-md-3">
+            <h2><span class="glyphicon glyphicon-user"></span>User(s)</h2>
+        </div>
+        <span id="CategoryCount" name="CategoryCount"></span>
+        <div class="btn btn-info btn-xs pull-right" style="color:black;"> <a href="/Login/ViewUser">View User(s)</a></div>
+    </div>
+    @*For Number of Item Count*@
+    <div class="row col-md-5 panel panel-default pull-right">
+        <div class="col-md-3">
+            <h2><span class="glyphicon glyphicon-shopping-cart"></span>Item(s)</h2>
+        </div>
+
+        <span id="ItemCount" name="ItemCount"></span>
+        <div class="btn btn-info btn-xs pull-right" style="color:black;"> <a href="/Item/Viewitems">View Item(s)</a></div>
+    </div>
+    @*For Number of Customer Count*@
+    <div class="row col-md-5 panel panel-default pull-left">
+        <div class="col-md-3">
+            <h2><span class="glyphicon glyphicon-user"></span>Customer(s)</h2>
+        </div>
+
+        <span id="CustomerCount" name="CustomerCount"></span>
+        <div class="btn btn-info btn-xs pull-right" style="color:black;"> <a href="/Customer/ViewCustomer">View Customer(s)</a></div>
+    </div>
+    @*For Number of Vendor Count*@
+    <div class="row col-md-5 panel panel-default pull-right">
+        <div class="col-md-3">
+            <h2><span class="glyphicon glyphicon-user"></span>vendor(s)</h2>
+        </div>
+
+        <span id="VendorCount" name="VendorCount"></span>
+        <div class="btn btn-info btn-xs pull-right" style="color:black;"> <a href="/Vendor/ViewVendor">View Vendor(s)</a></div>
+    </div>
+    @*For Number of Purchase Count*@
+    <div class="row col-md-5 panel panel-default pull-left">
+        <div class="col-md-3">
+            <h2><span class="glyphicon glyphicon-shopping-cart"></span>Purchase(s)</h2>
+        </div>
+
+        <span id="PurchaseCount" name="PuchaseCount"></span>
+        <div class="btn btn-info btn-xs pull-right" style="color:black;"> <a href="/Purchase/ViewPurchase">View Purchase(s)</a></div>
+    </div>
+    @*For Number of Sale Count*@
+    <div class="row col-md-5 panel panel-default pull-right">
+        <div class="col-md-3">
+            <h2><span class="glyphicon glyphicon-shopping-cart"></span>Sale(s)</h2>
+        </div>
+
+        <span id="SaleCount" name="SaleCount"></span>
+        <div class="btn btn-info btn-xs pull-right" style="color:black;"> <a href="/Sale/ViewSale">View Sale(s)</a></div>
+
+    </div>
+    <div class="clearfix"></div>
+
+</body>
+</html>  
+    
+    
+        
+@section Scripts
+    {
+    <script>
+
+    $(function () {
+       
+        $('#CategoryCount').load('/DashBoard/CategoryCount');
+        $('#ItemCount').load('/DashBoard/ItemCount');
+        $('#CustomerCount').load('/DashBoard/CustomerCount');
+        $('#VendorCount').load('/DashBoard/VendorCount');
+        $('#PurchaseCount').load('/DashBoard/PurchaseCount');
+        $('#SaleCount').load('/DashBoard/SaleCount');
+
+    });
+     </script>
+
+
+    @*script for live chat agent*@
+    <script type="text/javascript">
+        function add_chatinline() { var hccid = 97226075; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+        add_chatinline(); </script>
+
+       }
+
+
+
+
+

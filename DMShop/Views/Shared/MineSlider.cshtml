@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/light-bootstrap-dashboard-master/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="~/slidere/style.css" rel="stylesheet"/> 
+    <link href="~/Accessories/Footer.css" rel="stylesheet" type="text/css" />
+    <link href="~/Accessories/AboutUs.css" rel="stylesheet" />
+    <link href="~/FUSlider/slider/slider.css" rel="stylesheet" />
+    <link href="~/FUSlider/slider/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700&subset=latin-ext,vietnamese,latin,cyrillic" rel="stylesheet" type="text/css" />
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/Accessories/jquery.dataTables.min.css" rel="stylesheet" />
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+
+    <body id="page-top" name="page-top" class="active">
+       
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="nav-btn btn-dark btn-lg accordion-toggle pull-left" title="Follow Us" role="tab" id="social-collapse" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></a>
+                    <a id="to-top" class="btn btn-lg btn-inverse" href="#top">
+                        <span class="sr-only">Toggle to Top Navigation</span>
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse js-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <a class="navbar-brand" href="#">
+                            <img height="30" width="22" src="~/FUSlider/slider/Logo.png" class="img-responsive pull-left" alt="Responsive image">
+                            Mobile store
+                        </a>
+                        <li class="dropdown mega-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                           
+                        </li>
+                        <li class="dropdown mega-dropdown">
+                            <a href="#AboutUs" class="dropdown-toggle" data-toggle="dropdown">About Us</a>
+                           
+                        </li>
+                        <li><a href="#ContactUs">Contact Us</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="/Login/CreateUser">Register</a>
+                        </li>
+                        <li><a href="/Login/NewLogin">Login</a></li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+      
+      
+        <aside id="accordion" class="social text-vertical-center">
+            <div class="accordion-social">
+                <ul class="panel-collapse collapse in nav nav-stacked" role="tabpanel" aria-labelledby="social-collapse" id="collapseOne">
+                    <li><a href="https://www.facebook.com/Usama.Danish1010" target="_blank"><i class="fa fa-lg fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/usama_danish22" target="_blank"><i class="fa fa-lg fa-twitter"></i></a></li>
+                    <li><a href="https://plus.google.com/u/0/107041365625178145984" target="_blank"><i class="fa fa-lg fa-google-plus"></i></a></li>
+                    <li><a href="https://github.com/UsamaDanish" target="_blank"><i class="fa fa-lg fa-github"></i></a></li>
+                    <li><a href="https://linkedin.com/in/blayderunner123" target="_blank"><i class="fa fa-lg fa-linkedin"></i></a></li>
+                    
+                </ul>
+            </div>
+        </aside>
+
+        <div class="masthead">
+            <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#bs-carousel" data-slide-to="1"></li>
+                    <li data-target="#bs-carousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item slides active">
+                        <div class="slide-1"></div>
+                        <div class="hero">
+                            <hgroup>
+                                <h1>24 MP Clearer Selfie</h1>
+                                <h3>Perfect Shot with SoftLight</h3>
+                            </hgroup>
+                            <button class="btn btn-hero btn-lg" role="link">See all features</button>
+                        </div>
+                    </div>
+                    <div class="item slides">
+                        <div class="slide-2"></div>
+                        <div class="hero">
+                            <hgroup>
+                                <h1>Do Bigger Things</h1>
+                                <h3>Experience Endless Satisfaction</h3>
+                            </hgroup>
+                            <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                        </div>
+                    </div>
+                    <div class="item slides">
+                        <div class="slide-3"></div>
+                        <div class="hero">
+                            <hgroup>
+                                <h1>IPhone X Say Hello</h1>
+                                <h3>A new Generation of Iphone</h3>
+                            </hgroup>
+                            <button class="btn btn-hero btn-lg" role="button">See all features</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*for AboutUs Page*@
+      
+       <div class="well well-lg col-md-12 pull-left" >
+                <h6 id="AboutUs"></h6>
+                <h3 ><strong>About Us</strong></h3>
+            </div>
+       
+        <div class="apniimage">
+            <div class="aboutus-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="aboutus">
+                                <h2 class="aboutus-title">Company Introduction</h2>
+                                <p class="aboutus-text">A young global smartphone brand focusing on introducing perfect sound quality and ultimate photography with cutting-edge technology, Vivo develops dynamic and stylish products for passionate young people. </p>
+                                <p class="aboutus-text">It develops and manufactures smartphones, smartphone accessories, software, and online services. Founded in 2009, Vivo has quickly expanded into markets in India and South East Asia.
+
+At Vivo we are dedicated to the pursuit of perfection and continuously creating surprises for users through constant innovation. Pioneering the use of Hi-Fi audio chips in smartphones, Vivo created the very first smartphone with a dedicated Hi-Fi chip, the X1. Since then Vivo has remained committed to providing the very best possible audio experience to customers.</p>
+                                <a class="aboutus-more" href="http://vivo.com/pk/about?tab=About">read more</a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        </div>
+                        <div class="col-md-5 col-sm-6 col-xs-12">
+                            <div class="feature">
+                                <div class="feature-box">
+                                    <div class="clearfix">
+                                        <div class="iconset">
+
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Work with heart</h4>
+                                            <p>By accessing, browsing, bookmarking, sharing and/or using this Website, you acknowledge that you have read, understood, and agree, to be bound by these terms and to comply with all applicable laws and regulations, including export and re-export control laws and regulations. If you do not agree to these terms, do not use this Website</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-box">
+                                    <div class="clearfix">
+                                        <div class="iconset">
+
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Reliable services</h4>
+                                            <p>We obtain your permission to use your name
+We first notify you that the materials or other information you submit to a particular part of this site will be published or otherwise used with your name on it.
+We are required to do so by law.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-box">
+                                    <div class="clearfix">
+                                        <div class="iconset">
+
+                                        </div>
+                                        <div class="feature-content">
+                                            <h4>Great support</h4>
+                                            <p>The information that Vivo publishes on the Internet may contain references or cross references to our products, programs and services that are not announced or available in your country. Such references do not imply that Vivo intends to announce such products, programs or services in your country. Consult your local Vivo business contact for information regarding the products, programs and services which may be available to you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        @*for ContactUs Page*@
+        <section id="contact">
+            <h6 id="ContactUs"></h6>
+            <div class="container">
+                <div class="well well-lg col-md-12 pull-left">
+                    <h3 ><strong>Contact Us</strong></h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3365.451898943178!2d74.51035231478797!3d32.48734898106048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391eea882dc0f8e7%3A0xf0467fc9622ba698!2sTheta+Solutions!5e0!3m2!1sen!2s!4v1515753731201" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="col-md-4">
+                        <p>
+                          <img src="~/FUSlider/slider/Logo.png" height="50" width="50" /> <span style="font-size:20px;color:purple;font-style:italic;"><bold>Say Hello to the future</bold></span> <hr />
+                            Apple Inc. is an American multinational technology company headquartered in Cupertino, California that designs, develops, and sells consumer electronics, computer software, and online services.Explore iPhone, the world's most powerful personal device. Check out iPhone X, iPhone 8, and iPhone 8 Plus.
+                        </p>
+                        <h4><strong>Get in Touch</strong></h4>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="" value="" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="" value="" placeholder="E-mail">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" name="" value="" placeholder="Phone">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="" rows="3" placeholder="Message"></textarea>
+                            </div>
+                            <button class="btn btn-default" type="submit" name="button">
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <hr />
+       
+        
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; 2017 - DMShop</p>
+            </footer>
+        </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+        @RenderSection("Scripts", required: false) 
+</body>
+</html>

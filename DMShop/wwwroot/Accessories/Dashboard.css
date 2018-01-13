@@ -1,0 +1,25 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    background: url(Apple.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+body span
+{
+    font-family:Calibri;
+}
+body h2
+{
+    font-family:Calibri;
+}
+body a
+{
+    text-decoration:none;
+    color:blueviolet;
+}
+body a:hover {
+    text-decoration: none;
+    color:white;
+}

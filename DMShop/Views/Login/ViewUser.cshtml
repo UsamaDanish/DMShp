@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DMShop.Models.User>
+
+@{
+    ViewData["Title"] = "ViewUser";
+}
+
+<h2>User(s)<span id="UserCounter" class="badge"></span></h2>
+
+<p>
+    <a asp-action="CreateUser" class="btn btn-info">Add User</a>
+</p>
+<table class="table table-responsive  table-hover table-striped" id="ViewUser" name="ViewUser" >
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Role)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  } , new{@class="btn btn-primary btn-xs" }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id  } , new { @class = "btn btn-primary btn-xs" }) | 
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  } , new { @class = "btn btn-primary btn-xs" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a href="/DashBoard/Index" class="btn btn-info">Back to Dashboard</a>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $('#UserCounter').load('/Login/CountUsers')
+        });
+        $(document).ready(function () { 
+            $('#ViewUser').DataTable();
+        });
+        
+    </script>
+}

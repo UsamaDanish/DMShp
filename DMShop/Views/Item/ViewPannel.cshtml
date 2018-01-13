@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DMShop.Models.Item>
+
+@{
+    ViewData["Title"] = "ViewPannel";
+}
+
+<h2>ViewPannel</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="PannelTable" name="PannelTable">
+    
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="col-md-4">
+            <td class="col-md-9">
+                <span class="panel panel-default col-md-12">
+                       <span class="col-md-4 pull-left">Id</span>  <span class="col-md-8"> @Html.DisplayFor(modelItem => item.Id)</span>  <span class="col-md-4 pull-left">Name</span>   <span class="col-md-8"> @Html.DisplayFor(modelItem => item.Name)</span>
+                      
+                       <span class="col-md-4">CategoryId</span>    <span class="col-md-8"> @Html.DisplayFor(modelItem => item.CategoryId)</span> <span class="col-md-4">Color</span>     <span class="col-md-8"> @Html.DisplayFor(modelItem => item.Color)</span> <span class="col-md-4">Model</span>     <span class="col-md-8"> @Html.DisplayFor(modelItem => item.ModelNo)</span>                  
+                       <span class="col-md-4">Price</span>        <span class="col-md-8"> @Html.DisplayFor(modelItem => item.Price)</span>
+                </span>
+            </td>
+           
+            <td class="col-md-3">
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('#PannelTable').DataTable();
+        });
+    </script>
+}
