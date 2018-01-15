@@ -48,8 +48,7 @@ namespace DMShop.Controllers
                 fs.Dispose();
                 Obj.Image = ItemImage + FileNameWithOutExtension + Extenstion;
             }
-
-            
+            Obj.Date = DateTime.Now;
             OurContext.Item.Add(Obj);
             OurContext.SaveChanges();
             return RedirectToAction(nameof(ItemController.ViewItems));
@@ -89,6 +88,10 @@ namespace DMShop.Controllers
             int a = OurContext.Item.ToList<Item>().Count();
             string count = a.ToString();
             return count;
+        }
+        public int SaleCount(int ItemId)
+        {
+            return OurContext.Sale.Where(m => m.ItemId == ItemId).Count();
         }
     }
 }
