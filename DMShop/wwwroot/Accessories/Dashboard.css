@@ -23,3 +23,15 @@ body a:hover {
     text-decoration: none;
     color:white;
 }
+ul.nav.nav-tabs {
+    margin: 10px 0px;
+}
+
+    ul.nav.nav-tabs li:not(.active) a {
+        background-color: #e89e19;
+        color: grey;
+    }
+
+    ul.nav.nav-tabs li.active a {
+        border-top: 3px solid #00ff21;
+    }

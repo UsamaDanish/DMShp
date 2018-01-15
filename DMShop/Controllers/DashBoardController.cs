@@ -18,9 +18,9 @@ namespace DMShop.Controllers
         {
             return View();
         }
-        public String CategoryCount()
+        public String UserCount()
         {
-            int count = OurContext.Category.ToList<Category>().Count();
+            int count = OurContext.User.ToList<User>().Count();
             string CategoryCount = "<h3>Total User(s) are = "+count+"</h3>";
             return CategoryCount;
         }
@@ -54,5 +54,41 @@ namespace DMShop.Controllers
             String SaleCount = "<h3>Total Sale(s) are = "+ count +" </h3>";
             return SaleCount;
         }
+        //-------------------3 days Activity--------------------//
+        public String ItemAddedCount()
+        {
+            int count = OurContext.Item.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+            return count.ToString();
+        }
+        public String SaleAddedCount()
+        {
+            int count = OurContext.Sale.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+            return count.ToString();
+        }
+        //public String PurchaseAddedCount()
+        //{
+        //    int count = OurContext.Purchase.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+        //    return count.ToString();
+        //}
+        //public String CustomerAddedCount()
+        //{
+        //    int count = OurContext.Customer.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+        //    return count.ToString();
+        //}
+        //public String VendorAddedCount()
+        //{
+        //    int count = OurContext.Vendor.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+        //    return count.ToString();
+        //}
+        //public String UserAddedCount()
+        //{
+        //    int count = OurContext.User.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+        //    return count.ToString();
+        //}
+        //public String CategoryAddedCount()
+        //{
+        //    int count = OurContext.Category.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+        //    return count.ToString();
+        //}
     }
 }

@@ -61,6 +61,38 @@
 
     </div>
     <div class="clearfix"></div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#firstTab">Item(s)</a></li>
+        <li><a data-toggle="tab" href="#secondTab">Sale(s)</a></li>
+        <li><a data-toggle="tab" href="#ThirdTab">Purchase(s)</a></li>
+        <li><a data-toggle="tab" href="#FourtTab">Customer(s)</a></li>
+        <li><a data-toggle="tab" href="#fifthTab">Vendor(s)</a></li>
+        <li><a data-toggle="tab" href="#sixthTab">User(s)</a></li>
+        <li><a data-toggle="tab" href="#seventhTab">Categories</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="firstTab" class="tab-pane fade in active">
+            <span>Item(s) Added</span><span class="badge" id="ItemAddedCount"></span>
+        </div>
+        <div id="secondTab" class="tab-pane fade in ">
+            <span>Sale(s) Added</span><span class="badge" id="SaleAddedCount"></span>
+        </div>
+        <div id="ThirdTab" class="tab-pane fade in ">
+            <span>Purchase(s) Added</span><span class="badge" id="PurchaseAddedCount"></span>
+        </div>
+        <div id="FourtTab" class="tab-pane fade in ">
+            <span>Customer(s) Added</span><span class="badge" id="CustomerAddedCount"></span>
+        </div>
+        <div id="fifthTab" class="tab-pane fade in ">
+            <span>Vendor(s) Added</span><span class="badge" id="VenderAddedCount"></span>
+        </div>
+        <div id="sixthTab" class="tab-pane fade in ">
+            <span>User(s) Added</span><span class="badge" id="UserAddedCount"></span>
+        </div>
+        <div id="seventhTab" class="tab-pane fade in ">
+            <span>Category Added</span><span class="badge" id="CategoryAddedCount"></span>
+        </div>
+    </div>
 
 </body>
 </html>  
@@ -73,13 +105,20 @@
 
     $(function () {
        
-        $('#CategoryCount').load('/DashBoard/CategoryCount');
+        $('#CategoryCount').load('/DashBoard/UserCount');
         $('#ItemCount').load('/DashBoard/ItemCount');
         $('#CustomerCount').load('/DashBoard/CustomerCount');
         $('#VendorCount').load('/DashBoard/VendorCount');
         $('#PurchaseCount').load('/DashBoard/PurchaseCount');
         $('#SaleCount').load('/DashBoard/SaleCount');
-
+        $('#SaleCount').load('/DashBoard/SaleCount');
+        $('#ItemAddedCount').load('/DashBoard/ItemAddedCount');
+        $('#ItemAddedCount').load('/DashBoard/SaleAddedCount');
+        $('#ItemAddedCount').load('/DashBoard/PurchaseAddedCount');
+        $('#ItemAddedCount').load('/DashBoard/CustomerAddedCount');
+        $('#ItemAddedCount').load('/DashBoard/VendorAddedCount');
+        $('#ItemAddedCount').load('/DashBoard/UserAddedCount');
+        $('#ItemAddedCount').load('/DashBoard/CategoryAddedCount');
     });
      </script>
 
