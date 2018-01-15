@@ -1,6 +1,6 @@
-﻿
-@{ 
-    Layout = null;
+﻿@model DMShop.Models.User
+@{
+    
 }
 
 <!DOCTYPE html>
@@ -15,14 +15,25 @@
     <div class="login-box embed-responsive">
         <img src="~/Accessories/login.png" class="Myglipicon responsive img-responsive" />
             <h1>Login Here</h1>
-                <form class="form form-group embed-responsive" action="/Login/checkLoginUsingForm">
-                    <p>User Name:-</p>
-                        <input type="text" placeholder="enter user name" name="username" />
-                    <p>Password</p>
-                        <input type="password" placeholder="enter password"  name="password"/>
-                        <input type="submit" value="Login" name="submit" />
-                        <a href="#">Forget Your Password</a>
-                </form>
+        <form asp-action="NewLogin" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label" placeholder="enter user name"  ></label>
+                <input asp-for="Name" class="form-control"  />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="enter password"  />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" name="submit" />
+            </div>
+            <a href="#">Forget Your Password</a>
+        </form>
     </div>
 </body>
 </html>

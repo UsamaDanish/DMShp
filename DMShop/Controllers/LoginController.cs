@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DMShop.Models;
+using System.Net.Mail;
 
 namespace DMShop.Controllers
 {
@@ -30,18 +31,20 @@ namespace DMShop.Controllers
         [HttpPost]
         public IActionResult CreateUser(User Obj)
         {
+            Obj.Date = DateTime.Now;
             OurContext.User.Add(Obj);
+            sendMail(Obj);
             OurContext.SaveChanges();
-
+           
             return View();
         }
        [HttpGet]
-       public IActionResult CheckLogin()
+        public IActionResult NewLogin()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult CheckLogin(User Obj)
+        public IActionResult NewLogin(User Obj)
         {
             User RObj = OurContext.User.Where(abc => abc.Name == Obj.Name).FirstOrDefault<User>();
             if(RObj != null)
@@ -52,12 +55,13 @@ namespace DMShop.Controllers
                 }
                 else
                 {
+                    ViewBag.ErrorMessage = "Incorrect Password";
                     return View();
-                   
                 }
             }
            else
             {
+                ViewBag.ErrorMessage = "User Name is Incorrect";
                 return View();
             }
         }
@@ -88,10 +92,7 @@ namespace DMShop.Controllers
         {
             return View();
         }
-        public IActionResult NewLogin()
-        {
-            return View();
-        }
+        
         public string CountUsers()
         {
             int a = OurContext.User.ToList<User>().Count();
@@ -119,5 +120,36 @@ namespace DMShop.Controllers
             }
         }
 
+        public void sendMail(User Obj)
+        {
+            try
+            {
+                //setting up Mail Message
+                MailMessage oMail = new MailMessage();
+                oMail.Subject = "Notification About New Added "+Obj.Role+" .";
+                oMail.Body = "Dear,<br><br> A new person Named "+Obj.Name+" have joined Us with Authority of" +
+                    ""+Obj.Role+" . ";
+                oMail.IsBodyHtml = true;
+                IList<User> AllUser = OurContext.User.ToList<User>();
+                foreach(var item in AllUser)
+                {
+                    oMail.To.Add(new MailAddress(""+item.Email+""));
+                    oMail.From = new MailAddress("usamadanish22@gmail.com", "MobileShopFlow");
+                    //setting up SMTP Client
+                    SmtpClient oSmtp = new SmtpClient();
+                    oSmtp.Port = 587;
+                    oSmtp.EnableSsl = true;
+                    oSmtp.Host = "smtp.gmail.com";
+                    //Giving Creditientails to Mails
+                    oSmtp.Credentials = new System.Net.NetworkCredential("usamadanish22@gmail.com", "@Gmail@12");
+                    oSmtp.Send(oMail);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Mail can not be sent due to " + ex + "";
+            }
+        }
     }
 }
