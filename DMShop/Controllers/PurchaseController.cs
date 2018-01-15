@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DMShop.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Net.Mail;
 
 namespace DMShop.Controllers
 {
@@ -33,6 +34,7 @@ namespace DMShop.Controllers
            
             Item oItem=OurContext.Item.Where(abc => abc.Id == Obj.ItemId).FirstOrDefault<Item>();
             oItem.Quantity = oItem.Quantity + Obj.Quantity;
+            sendMail(Obj);
             OurContext.Item.Update(oItem);
             OurContext.Purchase.Add(Obj);
             OurContext.SaveChanges();
@@ -89,7 +91,34 @@ namespace DMShop.Controllers
             string count = a.ToString();
             return count;
         }
-       
+        public void sendMail(Purchase Obj)
+        {
+            try
+            {
+                User Admin = OurContext.User.Where(m => m.Role == "Admin").FirstOrDefault<User>();
+                //setting up Mail Message
+                MailMessage oMail = new MailMessage();
+                oMail.Subject = "Notifing about new purchase";
+                oMail.Body = "Respected Admin,<br><br> We have purchased " + Obj.ItemId + " with worth of " + Obj.TotalPrice + "From Our Vendor" + Obj.VendorId + " .";
+                oMail.IsBodyHtml = true;
+                oMail.To.Add(new MailAddress(Admin.Email));
+                oMail.From = new MailAddress("usamadanish22@gmail.com", "MobileShopFlow");
+                //setting up SMTP Client
+                SmtpClient oSmtp = new SmtpClient();
+                oSmtp.Port = 587;
+                oSmtp.EnableSsl = true;
+                oSmtp.Host = "smtp.gmail.com";
+                //Giving Creditientails to Mails
+                oSmtp.Credentials = new System.Net.NetworkCredential("usamadanish22@gmail.com", "@Gmail@12");
+                oSmtp.Send(oMail);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorInMail = "Mail could not be sent because of" + ex + "";
+            }
+        }
         
+
+
     }
 }

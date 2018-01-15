@@ -26,6 +26,7 @@ namespace DMShop.Controllers
         [HttpPost]
         public IActionResult AddVendor(Vendor Obj)
         {
+            Obj.Date = DateTime.Now;
             OurContext.Vendor.Add(Obj);
             OurContext.SaveChanges();
             return RedirectToAction(nameof(VendorController.ViewVendor));
@@ -66,6 +67,17 @@ namespace DMShop.Controllers
             int a = OurContext.Vendor.ToList<Vendor>().Count();
             String count = a.ToString();
             return count;
+        }
+        public string VendorShowStar(int VendorId)
+        {
+            if (OurContext.Purchase.Where(m => m.VendorId == VendorId && m.Date >= DateTime.Now.AddDays(-4)).Count() > 0)
+            {
+                return "star";
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }
