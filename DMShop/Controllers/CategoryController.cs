@@ -26,6 +26,12 @@ namespace DMShop.Controllers
         [HttpPost]
         public IActionResult AddCategory(Category Obj)
         {
+            Obj.Date = DateTime.Now;
+            if(OurContext.Category.Where(m => m.Name == Obj.Name).Count()>0)
+            {
+                ViewBag.Exists = "*This Category Already Exists";
+                return View();
+            }
             OurContext.Category.Add(Obj);
             OurContext.SaveChanges();
             return RedirectToAction(nameof(CategoryController.ViewCategories));
@@ -62,9 +68,14 @@ namespace DMShop.Controllers
         [HttpPost]
         public IActionResult Edit(Category Obj)
         {
+            Obj.Date = DateTime.Now;
             OurContext.Category.Update(Obj);
             OurContext.SaveChanges();
             return RedirectToAction(nameof(CategoryController.ViewCategories));
+        }
+        public int CountItems(int CategoryId)
+        {
+            return OurContext.Item.Where(m => m.CategoryId == CategoryId).Count();
         }
     }
 }

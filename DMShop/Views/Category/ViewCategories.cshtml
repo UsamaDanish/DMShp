@@ -6,19 +6,13 @@
 
 <h2>View Categories</h2>
 
-   @Html.ActionLink("Edit", "Edit", new { id = 1 })
-
-
 <p>
     <a href="/Category/AddCategory" class="btn btn-info">Create New</a>
 </p>
 
-<table class="table">
+<table class="table table-hover table-responsive table-striped col-md-6" id="ViewCategories">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
@@ -29,13 +23,11 @@
 @foreach (var item in Model)
 {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
+            
+            <td class="col-md-3">
+                @Html.DisplayFor(modelItem => item.Name)<span class="itemcount badge col-md-1 pull-right" data-id=@item.Id></span>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
+            <td class="col-md-3">
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id })
@@ -49,8 +41,26 @@
 
 
 @section Scripts{ 
-
-
+    
+        <script>
+            $(document).ready(function () { 
+                $('ViewCategories').DataTable();
+                $('.itemcount').each(function () {
+                    var count = $(this);
+                    $.ajax({
+                        before: function () { },
+                        url: '/Category/CountItems',
+                        type: 'Get',
+                        data: { CategoryId: count.data('id') },
+                        success: function (result) {
+                            count.text(result);
+                        },
+                        error: function () { },
+                        after: function () { }
+                    });
+                });
+            });
+        </script>
 @*script for live chat agent*@
 <script type="text/javascript">
 function add_chatinline(){var hccid=97226075;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
