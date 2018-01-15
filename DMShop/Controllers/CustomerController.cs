@@ -27,6 +27,7 @@ namespace DMShop.Controllers
         [HttpPost]
         public IActionResult AddCustomer(Customer Obj)
         {
+            Obj.Date = DateTime.Now;
             OurContext.Customer.Add(Obj);
             OurContext.SaveChanges();
             return RedirectToAction(nameof(CustomerController.ViewCustomer));
@@ -57,6 +58,7 @@ namespace DMShop.Controllers
         [HttpPost]
         public IActionResult Edit(Customer Obj)
         {
+            Obj.Date = DateTime.Now;
             OurContext.Customer.Update(Obj);
             OurContext.SaveChanges();
             return RedirectToAction(nameof(CustomerController.ViewCustomer));
@@ -66,6 +68,18 @@ namespace DMShop.Controllers
             int a = OurContext.Customer.ToList<Customer>().Count();
             string count = a.ToString();
             return count;
+        }
+        public string CustomerShowStar(int CustomerId)
+        {
+           
+            if (OurContext.Sale.Where(m => m.CustomerId == CustomerId && m.Date >= DateTime.Now.AddDays(-28)).Count()>0)
+            {
+                return "star";
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

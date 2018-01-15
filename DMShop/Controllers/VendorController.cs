@@ -70,7 +70,7 @@ namespace DMShop.Controllers
         }
         public string VendorShowStar(int VendorId)
         {
-            if (OurContext.Purchase.Where(m => m.VendorId == VendorId && m.Date >= DateTime.Now.AddDays(-4)).Count() > 0)
+            if (OurContext.Purchase.Where(m => m.VendorId == VendorId && m.Date >= DateTime.Now.AddDays(-8)).Count() > 0)
             {
                 return "star";
             }

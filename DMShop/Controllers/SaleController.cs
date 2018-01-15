@@ -36,7 +36,8 @@ namespace DMShop.Controllers
             oItem.Quantity = oItem.Quantity - Obj.Quantity;
             OurContext.Update(oItem);
             OurContext.SaveChanges();
-            //sendMail(Obj);
+            sendMail(Obj);
+            sendMailToAdmin(Obj);
             return RedirectToAction(nameof(SaleController.AddSale));
         }
         public IActionResult ViewSale()
@@ -84,13 +85,14 @@ namespace DMShop.Controllers
         {
             try
             {
+                Customer customer = OurContext.Customer.Where(m => m.Id == Obj.CustomerId).FirstOrDefault<Customer>();
                 //setting up Mail Message
                 MailMessage oMail = new MailMessage();
                 oMail.Subject = "These are Greetings of Sale";
                 oMail.Body = "Dear Customer,<br><br> you have bought " + Obj.ItemId + " with worth of " + Obj.TotalPrice + "." +
                     "I hope you will enjoy this " + Obj.ItemId + ".For Any Complaint and Suggestion Please Contact with YourSelf ";
                 oMail.IsBodyHtml = true;
-                oMail.To.Add(new MailAddress("usama.danish2233@gmail.com"));
+                oMail.To.Add(new MailAddress(customer.Email));
                 oMail.From=new MailAddress("usamadanish22@gmail.com", "MobileShopFlow");
                 //setting up SMTP Client
                 SmtpClient oSmtp = new SmtpClient();
@@ -100,8 +102,36 @@ namespace DMShop.Controllers
                 //Giving Creditientails to Mails
                 oSmtp.Credentials = new System.Net.NetworkCredential("usamadanish22@gmail.com", "@Gmail@12");
                 oSmtp.Send(oMail);
+
             }
             catch(Exception ex)
+            {
+
+            }
+        }
+        public void sendMailToAdmin(Sale Obj)
+        {
+            try
+            {
+                User Admin = OurContext.User.Where(m => m.Role == "Admin").FirstOrDefault<User>();
+                //setting up Mail Message
+                MailMessage oMail = new MailMessage();
+                oMail.Subject = "Notification of Sale";
+                oMail.Body = "Respected Admin,<br><br>We have Sold Out " + Obj.ItemId + " with worth of " + Obj.TotalPrice + " Dated:"+Obj.Date+".";
+                oMail.IsBodyHtml = true;
+                oMail.To.Add(new MailAddress(Admin.Email));
+                oMail.From = new MailAddress("usamadanish22@gmail.com", "MobileShopFlow");
+                //setting up SMTP Client
+                SmtpClient oSmtp = new SmtpClient();
+                oSmtp.Port = 587;
+                oSmtp.EnableSsl = true;
+                oSmtp.Host = "smtp.gmail.com";
+                //Giving Creditientails to Mails
+                oSmtp.Credentials = new System.Net.NetworkCredential("usamadanish22@gmail.com", "@Gmail@12");
+                oSmtp.Send(oMail);
+
+            }
+            catch (Exception ex)
             {
 
             }

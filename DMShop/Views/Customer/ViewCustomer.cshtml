@@ -32,7 +32,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Name)<span class="showstar" data-id=@item.Id></span>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNo)
@@ -58,7 +58,34 @@
             $('#ViewCustomer').DataTable();
             $('#CustomerCounter').load('/Customer/CountCustomer');
         });
+        $('.showstar').each(function () {
 
+            var show = $(this);
+
+            $.ajax({
+                before: function () { },
+
+                url: '/Customer/CustomerShowStar',
+                type: 'GET',
+                data: {
+                    CustomerId: show.data('id')
+
+                },
+                success: function (result) {
+
+                    if (result == "star") {
+
+                        show.addClass("glyphicon glyphicon-star-empty");
+
+                    }
+
+
+                },
+                error: function () { },
+                after: function () { }
+            });
+
+        });
     </script>
 
 
