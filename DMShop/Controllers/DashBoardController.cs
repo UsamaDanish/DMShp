@@ -85,10 +85,10 @@ namespace DMShop.Controllers
         //    int count = OurContext.User.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
         //    return count.ToString();
         //}
-        //public String CategoryAddedCount()
-        //{
-        //    int count = OurContext.Category.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
-        //    return count.ToString();
-        //}
+        public String CategoryAddedCount()
+        {
+            int count = OurContext.Category.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
+            return count.ToString();
+        }
     }
 }
