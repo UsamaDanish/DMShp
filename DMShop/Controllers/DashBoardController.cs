@@ -80,15 +80,42 @@ namespace DMShop.Controllers
         //    int count = OurContext.Vendor.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
         //    return count.ToString();
         //}
-        //public String UserAddedCount()
+        public string LastAddedCategory()
+        {
+            try
+            {
+                int? dNumber = OurContext.Category.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Max(u => (int?)u.Id);
+                Category catName = OurContext.Category.Where(db => db.Id == (int)dNumber).SingleOrDefault();
+                return catName.Name;
+            }
+            catch
+            {
+                return "Nill";
+            }
+
+        }
+        
+        //    public string MostUsedCategory()
         //{
-        //    int count = OurContext.User.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
-        //    return count.ToString();
+        //    try
+        //    {
+        //        int? dNumber = OurContext.Sale.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Max(u => (int?)u.ItemId);
+        //        Item oItem = OurContext.Item.Where(m => m.Id == dNumber).FirstOrDefault<Item>();
+        //        Category catName = OurContext.Category.Where(db => db.Id == oItem.CategoryId).SingleOrDefault();
+        //        return catName.Name;
+        //    }
+        //    catch
+        //    {
+        //        return "Nill";
+        //    }
+
         //}
+
         public String CategoryAddedCount()
         {
             int count = OurContext.Category.Where(m => m.Date >= DateTime.Now.AddDays(-4)).Count();
             return count.ToString();
         }
+        
     }
 }
